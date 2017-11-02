@@ -4,7 +4,6 @@
 \usepackage {lmodern}
 \usepackage {graphicx}
 \usepackage {caption}
-\usepackage {gensymb}
 \usepackage {colorspace}
 \usepackage[LGRgreek]{mathastext}
 \usepackage[T1]{fontenc}
@@ -48,7 +47,6 @@
 
 
 \AtBeginBibliography{\scriptsize}
-\bibliography{oralDefense.bib}
 
 %\setbeamertemplate{bibliography item}{}
 
@@ -67,7 +65,7 @@
         \item Introduction \\ 
         \item Basics \\
         \item Getting Stuff Done \\
-        \item Advanced
+        \item Advanced Topics
     \end{itemize}
 \end{frame}
 
@@ -100,6 +98,7 @@
 \end{frame}
 
 
+\subsection{Mastery Levels}
 \begin{frame} {Introduction} {Levels to Vim Mastery}
     \begin{itemize}
         \item Level 0: knows nothing about vim \\
@@ -112,9 +111,10 @@
 \end{frame}
 
 
-\section{Vim as a Language}
+\section{Basics}
 
-\begin{frame} {Vim as a Language}
+\subsection{Vim as a Language}
+\begin{frame}[c]{Basics}{Vim as a Language}
 \begin{table}
     \centering
     \label{tab:label}
@@ -141,7 +141,7 @@
 
 
 \subsection{Building Sentences}
-\begin{frame}[fragile] {Vim as a Language} {Building Sentences (Commands)}
+\begin{frame}[fragile] {Basics} {Building Sentences (Commands)}
     \centering
     Verb - Modifier - Noun
 
@@ -161,10 +161,10 @@
 \end{frame}
 
 
-\section{Getting Things Done}
+\section{Getting Stuff Done}
 
-\subsection{Working With Your File}
-\begin{frame}[t]{Getting Things Done} {Working With Your File}
+\subsection{File Operations}
+\begin{frame}[c]{Getting Stuff Done} {File Operations}
     \begin{table}[htpb]
         \centering
         \begin{tabular}{r|l}
@@ -177,25 +177,48 @@
 \end{frame}
 
 
-\subsection{Moving Around in Your Text}
-\begin{frame}[fragile]{Getting Things Done} {Moving Around in Your Text} 
-    \begin{lstlisting}
-    # search for include
-    /include<CR>
-
-    # jump forward and land on the < character
-    f<
-
-    # jump forward and land right before the < character
-    t<
-
-    # change to and including the < character
-    t<
-    \end{lstlisting}  
+\subsection{Moving Around}
+\begin{frame}[c]{Getting Stuff Done} {Moving Around in Your Text} 
+    \begin{table}[htpb]
+        \centering
+        \begin{tabular}{r|l}
+            j & move down one line \\
+            k & move up one line \\
+            h & move left one character \\
+            l & move right one character \\
+            gg & go to the top of the file \\
+            G & go to the bottom of the file \\
+        \end{tabular}
+    \end{table}
 \end{frame}
 
-\subsection{Searching Your Text}
-\begin{frame}[fragile]{Getting Things Done} {Searching Your Text} 
+\begin{frame}[c]{Getting Stuff Done} {Moving Within the Line} 
+    \begin{table}[htpb]
+        \centering
+        \begin{tabular}{r|l}
+            0 & move to the beginning of the line \\
+            \$ & move to the end of the line \\
+            \^{} & move to the first non-blank character in the line \\
+            t" & jump to right before the next quotes \\
+            f" & jump and land on the next quotes \\
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+
+\begin{frame}[c]{Getting Stuff Done} {Moving by Word} 
+    \begin{table}[htpb]
+        \centering
+        \begin{tabular}{r|l}
+            w & move forward one word \\
+            b & move back one word \\
+            e & move to the end of your word \\
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+
+\begin{frame}[fragile]{Getting Stuff Done} {Searching Your Text} 
     \begin{lstlisting}
     # search for include
     /include<CR>
@@ -212,20 +235,131 @@
 \end{frame}
 
 
+\subsection{Changing Text}
+\begin{frame}[c]{Getting Stuff Done}{Understanding Modes}
+    \centering
+    \includegraphics[width=0.8\textwidth]{modes}
+\end{frame}
+
+
+\begin{frame}[c]{Getting Stuff Done}{Inserting Text}
+    From Command/Normal mode:
+    \begin{table}[htpb]
+        \centering
+        \begin{tabular}{r|l}
+            i & insert before the cursor \\
+            I & insert at the beginning of the line \\
+            a & append after the cursor \\
+            A & append at the end of the line \\
+            o & open a new line below the current one \\
+            O & open a new line above the current one \\
+            r & replace the one character under your cursor \\
+            R & replace the character, but stay in insert mode \\
+            S & substitute the entire current line \\
+            C & delete the line from where you're at, and enter insert mode \\
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+
+\begin{frame}[c]{Getting Stuff Done}{Deleting Text}
+    From Command/Normal mode:
+    \begin{table}[htpb]
+        \centering
+        \begin{tabular}{r|l}
+            x    & exterminate (delete) the character under the cursor \\
+            X    & exterminate (delete) the character before the cursor \\
+            dd   & delete the current line \\
+            dt.  & delete frome where you are to the period \\
+            D    & delete to the end of the line \\
+            J    & join the current line with the next one \\
+                 & (delete what's between) \\
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+
+\begin{frame}[t]{Getting Stuff Done}{Undo and Redo}
+    \begin{table}[htpb]
+        \centering
+        \begin{tabular}{r|l}
+            u      & undo your last action \\
+            Ctrl-r & redo the last action \\
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\section{Advanced Topics}
+
+\subsection{Repeatability}
+\begin{frame}[t]{Advanced Topics}{Repeatability}
+    \vspace{2cm}
+    \centering
+    "." \\
+    \vspace{1cm}
+    Given a discreet movement action, combine it with a repeatable command captured in the ".".
+\end{frame}
+
+\subsection{Substitution}
+\begin{frame}[fragile]{Advanced Topics}{Substitution}
+    \begin{lstlisting}
+    # change "foo" to "bar" on every line
+    :%s/foo/bar/g
+
+    # change "foo" to "bar" on just the current line
+    :s/foo/bar/g
+    \end{lstlisting}
+\end{frame}
+
+
+\subsection{Text Objects}
+\begin{frame}[t]{Advanced Topics}{Text Objects}
+    Word Text Objects
+    Paragraphs
+    Single quotes
+    double quotes
+
+    
+\end{frame}
 
 
 
-\subsection{Basic Motions}
-\begin{frame}[t]{Getting Things Done}
+\subsection{Visual Mode}
+\begin{frame}[t]{Advanced Topics}{Using Visual Mode}
+    
+\end{frame}
+
+
+\subsection{Macros}
+\begin{frame}[t]{Advanced Topics}{Using Macros}
+    
+\end{frame}
+
+
+
+\subsection{Plugins}
+\begin{frame}[t]{Advanced Topics}{Using Plugins}
     
 \end{frame}
 
 
 
 
-
-\begin{frame}
-\frametitle{References}
-\printbibliography
+\subsection{Configuring Vim}
+\begin{frame}[t]{Advanced Topics}{Configuring Vim}
+    .vimrc file
+    
 \end{frame}
+
+
+
+\section{Resources}
+\begin{frame} {Additional Resources}
+    vimtutor
+    vim adventure
+
+
+\end{frame}
+
+
 \end{document}

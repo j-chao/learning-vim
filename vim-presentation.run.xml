@@ -78,8 +78,5 @@
     <requires type="dynamic">
       <file>vim-presentation.bcf</file>
     </requires>
-    <requires type="editable">
-      <file>oralDefense.bib</file>
-    </requires>
   </external>
 </requests>

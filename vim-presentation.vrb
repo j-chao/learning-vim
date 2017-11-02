@@ -1,14 +1,8 @@
-\frametitle{Getting Things Done}\framesubtitle {Searching Your Text}
+\frametitle{Advanced Topics}\framesubtitle {Substitution}
     \begin{lstlisting}
-    # search for include
-    /include<CR>
+    # change "foo" to "bar" on every line
+    :%s/foo/bar/g
 
-    # jump forward and land on the < character
-    f<
-
-    # jump forward and land right before the < character
-    t<
-
-    # change to and including the < character
-    ct<
+    # change "foo" to "bar" on just the current line
+    :s/foo/bar/g
     \end{lstlisting}
