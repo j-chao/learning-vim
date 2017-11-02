@@ -1,0 +1,4 @@
+PWD /Users/jchao100/Documents/Personal-Development/vim-presentation
+INPUT /usr/local/texlive/2017/texmf.cnf
+INPUT /usr/local/texlive/2017/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2017/texmf-var/web2c/pdftex/pdflatex.fmt

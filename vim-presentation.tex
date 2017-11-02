@@ -1,0 +1,231 @@
+\documentclass{beamer}
+
+% packages
+\usepackage {lmodern}
+\usepackage {graphicx}
+\usepackage {caption}
+\usepackage {gensymb}
+\usepackage {colorspace}
+\usepackage[LGRgreek]{mathastext}
+\usepackage[T1]{fontenc}
+\setbeamerfont{footnote}{size=\tiny}
+\usepackage[backend=biber, autocite=superscript]{biblatex}
+\usepackage {listings}
+
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=bash,
+  showstringspaces=false,
+  basicstyle=\footnotesize,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+\lstdefinestyle{customasm}{
+  belowcaptionskip=1\baselineskip,
+  frame=L,
+  xleftmargin=\parindent,
+  language=bash,
+  basicstyle=\footnotesize,
+  commentstyle=\itshape\color{purple!40!black},
+}
+
+\lstset{escapechar=@,style=customc}
+
+
+\usetheme{Hannover}
+
+%\definecolor{optumOrange}{cmyk}{0, .62, .95, 0}
+%\setbeamercolor{structure}{fg=optumOrange}
+
+
+\graphicspath {{images/}}
+
+
+\AtBeginBibliography{\scriptsize}
+\bibliography{oralDefense.bib}
+
+%\setbeamertemplate{bibliography item}{}
+
+\title{Using Vim}
+\author{Justin Chao}
+\date{November 6, 2017}
+\titlegraphic{\includegraphics[width=0.4\textwidth, height=0.2\textwidth]{vim}}
+
+\begin{document}
+\frame{\titlepage}
+
+\section{Introduction}
+
+\begin{frame} {Introduction} {The Approach}
+    \begin{itemize}
+        \item Introduction \\ 
+        \item Basics \\
+        \item Getting Stuff Done \\
+        \item Advanced
+    \end{itemize}
+\end{frame}
+
+\subsection{What is Vim}
+\begin{frame} {Introduction} {What is Vim}
+    Vim is a highly configurable, \underline{modal} text editor built to make creating and changing any kind of text
+    very efficient. \\
+
+    \begin{itemize}
+        \item System administration\\
+        \item Programming\\
+        \item Working with HTML, LaTeX, or other markup languages\\
+        \item Heavy editing of plain text files\\
+    \end{itemize}
+\end{frame}
+
+\subsection{Learning Vim}
+\begin{frame}[t]{Learning Vim}
+    \centering
+    \includegraphics[width=0.8\textwidth]{learningVim}
+\end{frame}
+
+\subsection{Why Vim}
+\begin{frame} {Introduction} {Why Vim}
+    \begin{itemize}
+        \item It's ubiquitous. \\It's installed on every Unix-like system, and it's free!\\
+        \item It's scalable. \\You can use it just to edit config files or it can become your entire writing platform. \\
+        \item It's powerful. \\Because it works like a language vim takes you from frustrated to demigod very quickly. \\
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame} {Introduction} {Levels to Vim Mastery}
+    \begin{itemize}
+        \item Level 0: knows nothing about vim \\
+        \item Level 1: knows vim basics \\
+        \item Level 2: knows visual mode \\
+        \item Level 3: knows various motions \\
+        \item Level 4: not needing visual mode \\
+        \item Level 5: magic things are happening on the screen \\
+    \end{itemize}
+\end{frame}
+
+
+\section{Vim as a Language}
+
+\begin{frame} {Vim as a Language}
+\begin{table}
+    \centering
+    \label{tab:label}
+    \begin{tabular}{l|c|l}
+        Verbs    & d   & delete \\
+                 & c   & change           \\
+                 & y   & yank (copy)      \\
+                 & v   & visually select  \\
+        \hline
+        Modifers & i   & inside \\
+                 & a   & around \\
+                 & NUM & number (1,2,10) \\
+                 & t   & searches for something and stops before it \\
+                 & f   & searches for that thing and lands on it \\
+        \hline
+        Nouns    & w   & word \\
+                 & s   & sentence \\
+                 & p   & paragraph \\
+                 & t   & tag (think HTML/XML) \\
+                 & b   & block (think programming) \\
+    \end{tabular}
+\end{table}
+\end{frame}
+
+
+\subsection{Building Sentences}
+\begin{frame}[fragile] {Vim as a Language} {Building Sentences (Commands)}
+    \centering
+    Verb - Modifier - Noun
+
+    \begin{lstlisting}[language=sh]
+    # delete two words
+    d2w
+
+    # change inside sentence
+    cis
+
+    # yank (copy) inside paragraph 
+    yip
+
+    # change to the < character
+    ct<
+    \end{lstlisting}
+\end{frame}
+
+
+\section{Getting Things Done}
+
+\subsection{Working With Your File}
+\begin{frame}[t]{Getting Things Done} {Working With Your File}
+    \begin{table}[htpb]
+        \centering
+        \begin{tabular}{r|l}
+            vi/vim file & open your file in vim \\
+            :w & write your changes to the file \\
+            :q! & quit vim without saving your changes \\
+            :wq & write your changes, and quit \\
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+
+\subsection{Moving Around in Your Text}
+\begin{frame}[fragile]{Getting Things Done} {Moving Around in Your Text} 
+    \begin{lstlisting}
+    # search for include
+    /include<CR>
+
+    # jump forward and land on the < character
+    f<
+
+    # jump forward and land right before the < character
+    t<
+
+    # change to and including the < character
+    t<
+    \end{lstlisting}  
+\end{frame}
+
+\subsection{Searching Your Text}
+\begin{frame}[fragile]{Getting Things Done} {Searching Your Text} 
+    \begin{lstlisting}
+    # search for include
+    /include<CR>
+
+    # jump forward and land on the < character
+    f<
+
+    # jump forward and land right before the < character
+    t<
+
+    # change to and including the < character
+    ct<
+    \end{lstlisting}  
+\end{frame}
+
+
+
+
+
+\subsection{Basic Motions}
+\begin{frame}[t]{Getting Things Done}
+    
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{References}
+\printbibliography
+\end{frame}
+\end{document}

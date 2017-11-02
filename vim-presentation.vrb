@@ -1,0 +1,14 @@
+\frametitle{Getting Things Done}\framesubtitle {Searching Your Text}
+    \begin{lstlisting}
+    # search for include
+    /include<CR>
+
+    # jump forward and land on the < character
+    f<
+
+    # jump forward and land right before the < character
+    t<
+
+    # change to and including the < character
+    ct<
+    \end{lstlisting}
