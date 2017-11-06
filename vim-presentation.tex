@@ -37,7 +37,28 @@
 \lstset{escapechar=@,style=customc}
 
 
-\usetheme{Hannover}
+\usetheme[outer/progressbar=foot]{metropolis}
+\definecolor{Orange}{HTML}{E87722}
+\definecolor{Gray}{HTML}{282A2E}
+\setbeamercolor{frametitle}{bg=Orange}
+
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=Gray}
+\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+\makeatletter
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+      \insertsubsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll}\vskip3pt%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\makeatother
 
 %\definecolor{optumOrange}{cmyk}{0, .62, .95, 0}
 %\setbeamercolor{structure}{fg=optumOrange}
@@ -46,20 +67,21 @@
 \graphicspath {{images/}}
 
 
-\AtBeginBibliography{\scriptsize}
+%\AtBeginBibliography{\scriptsize}
 
 %\setbeamertemplate{bibliography item}{}
 
 \title{Using Vim}
-\author{Justin Chao}
+\author{Justin Chao \\ Technology Development Program - Class 11 \\}
 \date{November 6, 2017}
-\titlegraphic{\includegraphics[width=0.4\textwidth, height=0.2\textwidth]{vim}}
+\titlegraphic{\hspace*{6cm}\includegraphics[width=0.4\textwidth, height=0.2\textwidth]{vim}}
 
 \begin{document}
 \frame{\titlepage}
 
 \section{Introduction}
 
+\subsection{The Approach}
 \begin{frame} {Introduction} {The Approach}
     \begin{itemize}
         \item Introduction \\ 
@@ -119,22 +141,22 @@
     \centering
     \label{tab:label}
     \begin{tabular}{l|c|l}
-        Verbs    & d   & delete \\
-                 & c   & change           \\
-                 & y   & yank (copy)      \\
-                 & v   & visually select  \\
+        Verbs     & d   & delete \\
+                  & c   & change           \\
+                  & y   & yank (copy)      \\
+                  & v   & visually select  \\
         \hline
-        Modifers & i   & inside \\
-                 & a   & around \\
-                 & NUM & number (1,2,10) \\
-                 & t   & searches for something and stops before it \\
-                 & f   & searches for that thing and lands on it \\
+        Modifiers & i   & inside \\
+                  & a   & around \\
+                  & NUM & number (1,2,10) \\
+                  & t   & searches for something and stops before it \\
+                  & f   & searches for that thing and lands on it \\
         \hline
-        Nouns    & w   & word \\
-                 & s   & sentence \\
-                 & p   & paragraph \\
-                 & t   & tag (think HTML/XML) \\
-                 & b   & block (think programming) \\
+        Nouns     & w   & word \\
+                  & s   & sentence \\
+                  & p   & paragraph \\
+                  & t   & tag (think HTML/XML) \\
+                  & b   & block (think programming) \\
     \end{tabular}
 \end{table}
 \end{frame}
@@ -192,6 +214,8 @@
     \end{table}
 \end{frame}
 
+
+\subsection{Moving Within the Line}
 \begin{frame}[c]{Getting Stuff Done} {Moving Within the Line} 
     \begin{table}[htpb]
         \centering
@@ -206,6 +230,7 @@
 \end{frame}
 
 
+\subsection{Moving by Word}
 \begin{frame}[c]{Getting Stuff Done} {Moving by Word} 
     \begin{table}[htpb]
         \centering
@@ -218,6 +243,7 @@
 \end{frame}
 
 
+\subsection{Searching Your Text}
 \begin{frame}[fragile]{Getting Stuff Done} {Searching Your Text} 
     \begin{lstlisting}
     # search for include
@@ -314,11 +340,16 @@
 
 \subsection{Text Objects}
 \begin{frame}[t]{Advanced Topics}{Text Objects}
-    Word Text Objects
-    Paragraphs
-    Single quotes
-    double quotes
-
+    \centering
+    word text objects \\
+    double quotes \\
+    single quotes \\
+    parenthesis \\
+    paragraphs \\
+    back tics \\
+    brackets \\
+    braces \\
+    tags \\
     
 \end{frame}
 
@@ -326,13 +357,43 @@
 
 \subsection{Visual Mode}
 \begin{frame}[t]{Advanced Topics}{Using Visual Mode}
+
+    Visual mode magnifies the power of everything we've learned so far, \\
+    by allowing you to apply commands to the text that's currently highlighted.
+
+    \begin{table}[htpb]
+        \centering
+        \begin{tabular}{r|l}
+            v      & character based \\
+            V      & lined based \\
+            vi(    & select inside of parenthesis \\
+            vi[    & select inside of brackets \\
+            Ctrl-v & coluumn based \\
+        \end{tabular}
+    \end{table}
     
 \end{frame}
 
 
 \subsection{Macros}
 \begin{frame}[t]{Advanced Topics}{Using Macros}
-    
+
+    \begin{table}[htpb]
+        \centering
+        \begin{tabular}{r|l}
+            qa & start recording a macro named "a" \\
+            q  & stop recording \\
+            @a & play back the macro \\
+        \end{tabular}
+    \end{table}
+
+    \begin{enumerate}
+        \item Search within the line for "widget" \\
+        \item Go to the end of the word and add "-maker" \\
+        \item Go to the beginning of the line and add a colon \\
+        \item Go to the end of the line and add a period \\
+        \item Delete any empty spaces at the end of the line \\
+    \end{enumerate}
 \end{frame}
 
 
